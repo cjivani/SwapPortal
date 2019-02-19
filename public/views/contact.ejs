@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Swap your footwear!</title>
+    <!-- css files -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+    <!-- Javascript files -->
+    <link rel="icon" type="image/png" sizes="16x16"
+          href="../Images/favicon-16x16.png">
+</head>
+<body id="grad">
+<!-- Header of the main page -->
+<% include partials/header.ejs %>
+
+<!--User Links -->
+<% if(isSession == true){ %>
+    <% include partials/user-navigation-new.ejs %>
+<% } %>
+<% if(isSession == false){ %>
+    <% include partials/user-navigation.ejs %>
+<% } %>
+<% if(isSession == undefined){ %>
+    <% include partials/user-navigation.ejs %>
+<% } %>
+
+<!-- Site navigation options -->
+<% include partials/site-navigation.ejs %>
+
+<!-- Breadcrumbs and the image presentation -->
+<div class="col-xs-12 col-sm-10">
+
+    <nav>
+        <ol class="breadcrumb ">
+            <li class="breadcrumb-item "><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+        </ol>
+    </nav>
+
+
+    <!-- Main index.html content -->
+    <main>
+        <section>
+            <article>
+                <h3 class="heading">Contact Us!</h3>
+                <form>
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" placeholder="First Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Enter Email</label>
+                        <input type="email" class="form-control" placeholder="Email address">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <input type="text" class="form-control" placeholder="Enter the subject">
+                    </div>
+                    <div class="form-group">
+                        <label >Description</label>
+                        <textarea class="form-control" rows="3" placeholder="Maximum 1000 characters"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <h2>Address</h2>
+                <address>
+                    futXchange Inc.<br>
+                    1234 john doe lane<br>
+                    NC<br>
+                    Telephone: 123456789
+                </address>
+
+            </article>
+        </section>
+    </main>
+</div>
+</div>
+</div>
+
+<!-- Footer of the webpage -->
+<% include partials/footer.ejs %>
+
+</body>
+</html>

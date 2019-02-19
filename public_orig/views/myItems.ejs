@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Swap your footwear!</title>
+    <!-- css files -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- javscript files -->
+    <script type="text/javascript" src="../JS/myScript.js"></script>
+    <link rel="icon" type="image/png" sizes="16x16"
+          href="../Images/favicon-16x16.png">
+</head>
+<body id="grad">
+
+<!-- Header of the main page -->
+<% include partials/header.ejs %>
+
+<!--User Links -->
+<% if(isSession == true){ %>
+    <% include partials/user-navigation-new.ejs %>
+<% } %>
+<% if(isSession == false){ %>
+    <% include partials/user-navigation.ejs %>
+<% } %>
+<% if(isSession == undefined){ %>
+    <% include partials/user-navigation.ejs %>
+<% } %>
+
+<!-- Site navigation options -->
+<% include partials/site-navigation.ejs %>
+<!-- Main page and breadcrumbs -->
+<div class="col-xs-12 col-sm-10">
+    <main>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">My
+                    Footwears
+                </li>
+            </ol>
+        </nav>
+        <section>
+            <article>
+
+                <!-- Items table and their selection options -->
+                <table class="table table-border table-hover">
+                    <tr class="table_row table-warning">
+                        <th>My Footwears</th>
+                        <th>Category</th>
+                        <th>My Rating</th>
+                        <th>Swapped</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+
+                    <% userItemData.forEach(function (element) { %>
+                    <tr class="table_row">
+                        <td><a href=""><%= element.itemName %> </a>
+                        <td><%= element.catalogCategory %></td>
+                        <td><%= element.rating %></td>
+                        <% if(element.Status == 'pending'){ %>
+                            <td>
+                                <button type="button" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-refresh"> </span>
+                                </button>
+                            </td>
+                        <% } %>
+                        <% if(element.Status == 'swapped'){ %>
+                            <td>
+                                <button type="button" href="#" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-ok"> </span>
+                                </button>
+                            </td>
+                        <% } %>
+                        <% if(element.Status == 'available'){ %>
+                            <td>
+
+                            </td>
+                        <% } %>
+                        <td>
+                            <form action="/myitems?action=update&theItem=<%= element.itemCode %>" method="post">
+                                <input type="hidden" value="updateaction" name="itemList" id="itemList">
+                                <input type="submit" class="btn btn-primary"
+                                       value="Update" name="Update"/>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/myitems?action=delete&theItem=<%= element.itemCode %>" method="post">
+                                <input type="submit" class="btn btn-primary"
+                                       value="Delete" name="Delete"/>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }) %>
+
+                </table>
+            </article>
+        </section>
+        <div class="legend_info">
+				<span> Swap offer available:
+					<button type="button" class="btn btn-primary">
+						<span class="glyphicon glyphicon-refresh"></span>
+					</button>  Already swapped:
+					<button type="button" class="btn btn-primary">
+						<span class="glyphicon glyphicon-ok"></span>
+					</button>
+				</span></div>
+    </main>
+</div>
+</div>
+</div>
+
+<!-- Footer of the website -->
+<% include partials/footer.ejs %>
+
+</body>
+</html>

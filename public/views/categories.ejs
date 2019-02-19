@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Swap your footwear!</title>
+
+    <!-- CSS files -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="icon" type="image/png" sizes="16x16"
+          href="../Images/favicon-16x16.png">
+
+    <!-- Javascript files -->
+
+    <script type="text/javascript" src="../JS/myScript.js"></script>
+
+
+</head>
+<body id="grad">
+
+<!-- Header of the main page -->
+<% include partials/header.ejs %>
+
+<!--User Links -->
+<% if(isSession == true){ %>
+    <% include partials/user-navigation-new.ejs %>
+<% } %>
+<% if(isSession == false){ %>
+    <% include partials/user-navigation.ejs %>
+<% } %>
+<% if(isSession == undefined){ %>
+    <% include partials/user-navigation.ejs %>
+<% } %>
+
+<!-- Site navigation options -->
+<% include partials/site-navigation.ejs %>
+<!-- Main page and the breadcrumbs -->
+<div class="col-xs-12 col-sm-10">
+    <main>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Categories</li>
+            </ol>
+        </nav>
+        <article>
+            <section>
+                <% if(catalogValues === undefined)
+                { %>
+                    <form action="/categories" method="get">
+                        <div class="categories">
+                            Make a selection: <select name="catalogCategory"
+                                                      class="categoriessel"
+                                                      onchange="show(this.options[this.selectedIndex].value)">
+                                <option value="">Select</option>
+                                <option value="boots">boots</option>
+                                <option value="sneakers">sneakers</option>
+                            </select>
+                            <input type="submit" class="btn btn-primary"
+                                   name="Submit" id="frm1_submit"/>
+                        </div>
+                    </form>
+                <% }
+                else{ %>
+                <form action="#" method="get">
+                    <div class="categories">
+                        Make a selection: <select name="catalogCategory"
+                                                  class="categoriessel"
+                                                  onchange="show(this.options[this.selectedIndex].value)">
+                            <option value="">Select</option>
+                            <option value="boots">boots</option>
+                            <option value="sneakers">sneakers</option>
+                        </select>
+                        <input type="submit" class="btn btn-primary"
+                               name="Submit" id="frm1_submit"/>
+                    </div>
+                </form>
+                <div id="boots">
+                    <ul class="cat_list">
+                        <%catalogValues.forEach(function (element) {%>
+                            <li><img alt="img1" src="<%= element.imageUrl %>" height="100" width="100">
+                                <a href="/item/<%=element.itemCode%>"><%= element.itemName %></a></li>
+                        <% })%>
+                    </ul>
+                </div>
+                <% } %>
+            </section>
+
+
+        </article>
+    </main>
+</div>
+</div>
+</div>
+
+<!-- Footer of the webpage -->
+<% include partials/footer.ejs %>
+
+</body>
+</html>

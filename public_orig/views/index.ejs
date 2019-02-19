@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Swap your footwear!</title>
+    <!-- css files -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+    <!-- Javascript files -->
+    <script type="text/javascript" src="../JS/myScript.js"></script>
+    <link rel="icon" type="image/png" sizes="16x16"
+          href="../Images/favicon-16x16.png">
+</head>
+<body id="grad">
+<!-- Header of the main page -->
+<% include partials/header.ejs %>
+
+<!--User Links -->
+<% if(isSession == true){ %>
+    <% include partials/user-navigation-new.ejs %>
+<% } %>
+<% if(isSession == false){ %>
+    <% include partials/user-navigation.ejs %>
+<% } %>
+<% if(isSession == undefined){ %>
+    <% include partials/user-navigation.ejs %>
+<% } %>
+
+<!-- Site navigation options -->
+<% include partials/site-navigation.ejs %>
+
+<!-- Breadcrumbs and the image presentation -->
+<div class="col-xs-12 col-sm-10">
+
+    <nav>
+        <ol class="breadcrumb ">
+            <li class="breadcrumb-item "><a href="/">Home</a></li>
+        </ol>
+    </nav>
+
+    <img id="bgimages" alt="bgimages" src="../Images/Heels.jpg"
+         height="400" width="1250">
+    <div class="centered">
+        <h1 class="center_text">Got a spare pair of footwear?</h1>
+    </div>
+    <div class="centered_text">
+        <h3 class="center_text">SWAP YOUR FOOTWEAR FOR FREE!</h3>
+    </div>
+
+    <!-- Main index.html content -->
+    <main>
+        <section>
+            <article>
+                <h3 class="heading">UPLOAD THE SHOES YOU DON'T WEAR AND GRAB
+                    A QUALITY NEW PAIR!</h3>
+                <p>With the large amount of shoes available on our site you
+                    will be able to find your perfect pair. The futXchange is a
+                    network of shoe lovers. When you are done with a pair of shoes,
+                    swap it with another. Upload the item to our website and give
+                    your footwear new life.
+                <p>Find the perfect match for you!</p>
+                <p>Everyone loves new pair of shoes so here we are, giving you
+                    an opportunity to give away what is old and grab onto something
+                    new!</p>
+                <h3>Save Money!!!</h3>
+                <p>Those designer shoes that you thought were really
+                    expensive????Well they have become pretty affordable now!</p>
+            </article>
+        </section>
+    </main>
+</div>
+</div>
+</div>
+
+<!-- Footer of the webpage -->
+<% include partials/footer.ejs %>
+
+</body>
+</html>

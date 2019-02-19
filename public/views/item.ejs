@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Swap your footwear!</title>
+    <!-- css files -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Javascript files -->
+    <script type="text/javascript" src="../JS/myScript.js"></script>
+    <link rel="icon" type="image/png" sizes="16x16"
+          href="..Images/favicon-16x16.png">
+</head>
+<body id="grad">
+<!-- Header of the main page -->
+<% include partials/header.ejs %>
+
+<!--User Links -->
+<% if(isSession == true){ %>
+    <% include partials/user-navigation-new.ejs %>
+<% } %>
+<% if(isSession == false){ %>
+    <% include partials/user-navigation.ejs %>
+<% } %>
+<% if(isSession == undefined){ %>
+    <% include partials/user-navigation.ejs %>
+<% } %>
+
+<!-- Site navigation options -->
+<% include partials/site-navigation.ejs %>
+
+<!-- main page and breadcrumbs -->
+<div class="col-xs-12 col-sm-10">
+    <main>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a href="/categories">Categories</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Item</li>
+            </ol>
+        </nav>
+        <section>
+            <article>
+                <div>
+                    <div class="row">
+                        <div class="cols-sm-4"></div>
+                        <div class="cols-sm-8 back_button">
+                            <a class="btn btn-primary" role="button" href="/categories"> <span
+                                        class="glyphicon glyphicon-circle-arrow-left"></span> Go Back</a>
+                        </div>
+                    </div>
+                    <!-- first row containing book and swap it and rate it buttons -->
+                    <div class="row">
+                        <div class="cols-sm-3 book_head">
+                            <img src="<%= value.imageUrl %>" alt="sneaker" height="200"
+                                 width="200">
+                        </div>
+                        <div class="cols-sm-9 prod_desc">
+                            <h3><%= value.itemName %></h3>
+                            <% if(status === 'none'){ %>
+                            <div>
+                                <form action="/item?action=offer&theItem=<%= value.itemCode %>"
+                                      method="post">
+                                    <input type="submit" class="btn btn-primary"
+                                           value="Swap" name="Swap"/>
+                                </form>
+                            </div>
+                                <div style="margin-left: auto">
+                                <form action="/feedback?itemCode=<%=value.itemCode%>" method="post">
+                                    <input type="submit" class="btn btn-primary"
+                                           value="Rate" name="Rate"/>
+                                </form>
+                            </div>
+                            <% } %>
+                            <% if(status === 'swapped'){ %>
+                                <div class="itemStatus"><p><span class="glyphicon glyphicon-refresh"></span>You have
+                                        swapped this item!</p></div>
+                            <% } %>
+                            <% if(status === 'available'){ %>
+                                <% if(hasOffer == true){ %>
+                                <div class="itemStatus"><p><span class="glyphicon glyphicon-refresh"></span>You have a
+                                        swap offer for this item!</p></div>
+
+                                <div class="itemStatus">
+                                    <form action="/item?action=getoffer&theItem=<%= value.itemCode %>"
+                                          method="post">
+                                        <input type="submit" class="btn btn-primary"
+                                               value="See the offer" name="See the offer"/>
+                                    </form>
+                                </div>
+                                <% } %>
+                            <% } %>
+                        </div>
+                    </div>
+
+                    <!-- second row containing product description -->
+                    <div class="row">
+                        <div class="cols-sm-12 book_head">
+                            <h3>Product Description:</h3>
+                            <ul>
+                                <% for(var i = 0;i < value.description.length;i++){ %>
+                                    <li><%= value.description[i] %></li>
+                                <% }; %>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </article>
+        </section>
+    </main>
+</div>
+</div>
+</div>
+
+<!-- Footer of the website -->
+<% include partials/footer.ejs %>
+
+</body>
+</html>

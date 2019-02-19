@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Swap your footwear!</title>
+    <!-- css files -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+    <!-- Javascript files -->
+    <link rel="icon" type="image/png" sizes="16x16"
+          href="../Images/favicon-16x16.png">
+</head>
+<body id="grad">
+<!-- Header of the main page -->
+<% include partials/header.ejs %>
+
+<!--User Links -->
+<% if(isSession == true){ %>
+    <% include partials/user-navigation-new.ejs %>
+<% } %>
+<% if(isSession == false){ %>
+    <% include partials/user-navigation.ejs %>
+<% } %>
+<% if(isSession == undefined){ %>
+    <% include partials/user-navigation.ejs %>
+<% } %>
+
+<!-- Site navigation options -->
+<% include partials/site-navigation.ejs %>
+
+<!-- Breadcrumbs and the image presentation -->
+<div class="col-xs-12 col-sm-10">
+
+    <nav>
+        <ol class="breadcrumb ">
+            <li class="breadcrumb-item "><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">About Us</li>
+        </ol>
+    </nav>
+
+
+    <!-- Main index.html content -->
+    <img id="bgimages" alt="bgimages" src="../Images/men_shoes.jpg"
+         height="400" width="1250">
+    <main>
+        <section>
+            <article>
+                <h3 class="heading">About Us!</h3>
+                <p>futXchange was founded by shoe fanatics who have been passionate about wearing sneakers. We have been
+                    crazy about sneakers even longer, and labeled Sneaker Heads since the era
+                    of the stylish sneakers really took off.
+                <p>When the retro shoes started becoming a fashion trend we could reach back in our closets and pull out
+                    the originals and still look modern. SwapSneaker opens our closets, along with the closets of an
+                    entire community of people all around the world. !</p>
+                <p>Here, you can swap your classics with other Shoe lovers around the world to build and expand your
+                    collection. Don’t feel like swapping? Sell your sneakers securely to someone missing that essential
+                    pair.</p>
+            </article>
+        </section>
+    </main>
+</div>
+</div>
+</div>
+
+<!-- Footer of the webpage -->
+<% include partials/footer.ejs %>
+
+</body>
+</html>

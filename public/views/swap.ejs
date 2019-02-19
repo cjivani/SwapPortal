@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Swap your footwear!</title>
+    <!-- css files -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- javscript files -->
+    <script type="text/javascript" src="../JS/myScript.js"></script>
+    <link rel="icon" type="image/png" sizes="16x16"
+          href="../Images/favicon-16x16.png">
+</head>
+<body id="grad">
+
+<!-- Header of the main page -->
+<% include partials/header.ejs %>
+
+<!--User Links -->
+<% if(isSession == true){ %>
+    <% include partials/user-navigation-new.ejs %>
+<% } %>
+<% if(isSession == false){ %>
+    <% include partials/user-navigation.ejs %>
+<% } %>
+<% if(isSession == undefined){ %>
+    <% include partials/user-navigation.ejs %>
+<% } %>
+
+<!-- Site navigation options -->
+<% include partials/site-navigation.ejs %>
+
+<!-- main page and breadcrumbs -->
+<div class="col-xs-12 col-sm-10">
+    <main>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="/categories">Categories</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Swap</li>
+            </ol>
+        </nav>
+        <section>
+            <article>
+                <div>
+
+                    <!-- first row containing book and swap it and rate it buttons -->
+                    <div class="row">
+                        <div class="cols-sm-3 book_head">
+                            <img src="<%= swapElement.imageUrl %>" alt="sneaker" height="200"
+                                 width="200">
+                        </div>
+                        <div class="cols-sm-12 prod_desc">
+                            <h3><%= swapElement.itemName %></h3>
+                        </div>
+                    </div>
+
+                    <!-- second row containing product description -->
+                    <div class="row">
+                        <div class="cols-sm-12 book_head">
+                            <h3>Product Description:</h3>
+                            <ul>
+                                <% for(var i = 0;i < swapElement.description.length;i++){ %>
+                                    <li><%= swapElement.description[i] %></li>
+                                <% }; %>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--table for swap content-->
+                    <!-- Items table and their selection options -->
+                    <form action="/item?action=swapit&theItem=<%= swapElement.itemCode %>" method="post">
+                        <div class="row table_swap">
+                            <h3>Select an item available from your available swaps!</h3>
+                            <table class="table table-border table-hover">
+                                <% if(userItems.length > 0){ %>
+                                    <% userItems.forEach(function (element) { %>
+                                        <tr class="table_row">
+                                            <td><input type="radio" class="form-check-input" name="swapOptions"
+                                                       id="optionsRadios1"
+                                                       value=<%= element.itemCode %>>
+                                               <div style="padding-left: 20%"><%= element.itemName %></div>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                            </table>
+                        </div>
+                        <% } %>
+                        <div class="swapit_btn">
+                            <input type="hidden" value="updateaction" name="itemList" id="itemList">
+                            <input type="submit" class="btn btn-primary"
+                                   value="Swap It" name="Swap It"/>
+                        </div>
+                    </form>
+                    <% if(userItems.length === 0){ %>
+                        <p>
+                            No item available! Please add a new Item!!
+                        </p>
+                    <% } %>
+                </div>
+            </article>
+        </section>
+    </main>
+</div>
+</div>
+</div>
+
+
+<!-- Footer of the website -->
+<% include partials/footer.ejs %>
+
+</body>
+</html>

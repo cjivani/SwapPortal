@@ -1,0 +1,277 @@
+@charset "ISO-8859-1";
+
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+fieldset, label { margin: 0; padding: 0; }
+body{ margin: 20px; }
+h1 { font-size: 1.5em; margin: 10px; }
+
+/****** Style Star Rating Widget *****/
+
+.rating {
+	border: none;
+	float: left;
+}
+
+.rating > input { display: none; }
+.rating > label:before {
+	margin: 5px;
+	font-size: 1.25em;
+	font-family: FontAwesome;
+	display: inline-block;
+	content: "\f005";
+}
+
+.rating > .half:before {
+	content: "\f089";
+	position: absolute;
+}
+
+.rating > label {
+	color: #ddd;
+	float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
+
+#grad {
+	background-image: linear-gradient(white, #e0e0eb);
+}
+
+.UserOptions {
+	list-style-type: none;
+	display: inline-block;
+}
+
+.SiteOptions {
+	list-style-type: none;
+}
+
+nav.links {
+	padding-top: 10px;
+	padding-left: 35%;
+}
+
+.header {
+	margin-left: ($spacer*.25);
+	padding-left: ($spacer* .5);
+	padding-right: ($spacer* .5);
+	margin-top: 3;
+}
+
+.tabs {
+	margin-left:($spacer* .25);
+	padding-left: ($spacer* .5);
+	padding-right: ($spacer* .5);
+	margin-top: 3;
+}
+
+.centered {
+	position: absolute;
+	top: 15%;
+	left: 30%;
+}
+
+h1.center_text {
+	color: white;
+}
+
+.centered_text {
+	position: absolute;
+	top: 20%;
+	left: 30%;
+	color: white;
+}
+
+article {
+	padding-top: 50px;
+}
+
+footer {
+	text-align: center;
+}
+
+select.categoriessel {
+	padding-left: 35px;
+	padding-right: 35px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	width: 200px;
+	left: 471px;
+	margin-top: 30px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-color: black;
+	background-color: #f0f0f5;
+}
+
+.categories {
+	padding-left: 20%;
+	font-size: 20px;
+}
+
+#boots {
+	padding-left: 15%;
+	padding-top: 5%;
+}
+
+#sneakers {
+	display: none;
+	padding-left: 15%;
+	padding-top: 5%;
+}
+
+.book_head {
+	padding-left: 40px;
+}
+
+.cat_list {
+	list-style-type: none;
+}
+
+.checked {
+	color: orange;
+}
+
+table.table-border {
+	border: 3px solid black;
+}
+
+main {
+	min-height: 700px;
+}
+.breadcrumb_bg{
+	color: #c2c2d6;
+}
+.item_space{
+	margin-top: 5%;
+}
+.legend_info{
+	margin-top: 30%;
+	padding-bottom: 5%;
+}
+h3.heading{
+	text-align: center;
+}
+.prod_desc{
+	margin-left:initial;
+	display: block;
+}
+.back_button{
+	padding-left: 80%;
+}
+.about-heading{
+	margin-left: auto;
+}
+.about-section p{
+	margin-left: auto;
+}
+.table_swap{
+	padding-top: 5px;
+	padding-left: 200px;
+	width: 900px;
+}
+.swapit_btn{
+	padding-left: 800px;
+}
+.footer_padding{
+	padding-top: 10%;
+}
+.itemStatus{
+	padding-left: 10px;
+}
+* {box-sizing: border-box}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+	width: 100%;
+	padding: 15px;
+	margin: 5px 0 22px 0;
+	display: inline-block;
+	border: none;
+	background: white;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+	background-color: white;
+	outline: none;
+}
+
+hr {
+	border: 1px solid #f1f1f1;
+	margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+
+
+button:hover {
+	opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+	padding: 14px 20px;
+	background-color: #f44336;
+}
+
+.signupbtn {
+	padding: 14px 20px;
+	background-color: #32CD32;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+	float: left;
+	width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+	padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+	.cancelbtn, .signupbtn {
+		width: 100%;
+	}
+}
+
+.register{
+	border:2px solid #ccc;
+}
+
+.commenttable{
+	border-collapse: collapse;
+}
+.commenttd{
+	padding-top: .5em;
+	padding-bottom: .5em;
+}
+
+.commentheader{
+	text-align: center;
+	color: steelblue;
+	font-weight: normal;
+	font-family: 'Ultra', sans-serif;
+	font-size: 24px;
+	line-height: 42px;
+	text-transform: uppercase;
+}
